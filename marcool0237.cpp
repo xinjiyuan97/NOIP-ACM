@@ -34,8 +34,8 @@ bool check(int x, int y) {
   for (int i = 1; i <= 3; i++)
     for (int j = 1; j <= 3; j++) {
       memset(Q , 0 , sizeof(Q));
-      for (int x1 = (i - 1) * 3; x1 <= i * 3; x1++)
-        for (int y1 = (j - 1) * 3; y1 <= j * 3; y1++)
+      for (int x1 = (i - 1) * 3; x1 < i * 3; x1++)
+        for (int y1 = (j - 1) * 3; y1 < j * 3; y1++)
           if (s[x1][y1] != '?') {
             if (Q[s[x1][y1] - '0'])
               return false;
@@ -48,7 +48,7 @@ bool check(int x, int y) {
 }
 
 void OUTPUT() {
-  cout << endl;
+  //cout << endl;
   for (int i = 0; i < 9; i++) {
     cout << s[i][0];
     for (int j = 1; j < 9; j++)
@@ -76,7 +76,7 @@ void work() {
   for (int i = 1; i <= 9; i++) {
     s[x][y] = i + '0';
     if (check(x , y) == true) {
-      OUTPUT();
+      //OUTPUT();
       work();
       
     }
