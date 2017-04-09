@@ -36,15 +36,17 @@ public:
     ans.s[0] = s[0] + x.s[0];
     for (int i = 1; i < s[0]; i++)
       for (int j = 1; j < x.s[0]; j++)
-        ans.s[i + j - 1] = s[i] * x.s[i];
+        ans.s[i + j - 1] += s[i] * x.s[i];
     int t = 0;
     for (int i = 1; i <= ans.s[0]; i++) {
       ans.s[i] += t;
       t = ans.s[i] / 10000;
       ans.s[i] %= 10000;
     }
-    if (t)
-      ans.s[ans.s[0]++] = t;
+    while (t) {
+      ans.s[ans.s[0]++] = t % 10000;
+      t /= 10000;
+    }
     return ans;
   }
 };
